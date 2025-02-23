@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - main: Checkout code
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Nde.js
+      - name: Set up Node.js
         uses: actions/setup-node@v2
         with: 
           node-version: 18
