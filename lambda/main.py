@@ -3,4 +3,4 @@ def handler(event,context):
         "message": "Hello wolrd",
         "version": "1.0.0"
     }
-    return{"statusCode":200, "body":"Hello World"}
+    return{"statusCode":200, "body":"Hello World!"}
