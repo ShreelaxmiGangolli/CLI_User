@@ -8,18 +8,19 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with: 
-          node-version: 18
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20  # Use supported version (not 22)
 
-      - name: Deploy CDK stack
-        working-directory: ./
+      - name: Install Dependencies
+        run: npm install  # Install aws-cdk-lib and other dependencies
+
+      - name: Deploy with CDK
         run: npx cdk deploy --require-approval never
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.BETA_AWS_ACCESS_KEY_ID }}
