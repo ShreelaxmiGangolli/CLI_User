@@ -17,6 +17,13 @@ jobs:
         with:
           node-version: 20  # Use supported version (not 22)
 
+      -name: Cache Node.js Dependencies
+      id: cache
+      uses: actions/cache@v3
+      with:
+        path: ./node_modules
+        key: ${{runner.os}}-node-${{hashFiles('./package-lock.json')}}
+
       - name: Install Dependencies
         run: npm install  # Install aws-cdk-lib and other dependencies
 
